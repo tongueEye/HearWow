@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_night">
+
+    <ImageView
+        android:id="@+id/play_quiz_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="2.2:1"
+        app:srcCompat="@drawable/splash_bottom" />
+
+    <ImageView
+        android:id="@+id/devil_check_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/quiz_paper_IV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/devil_icon" />
+
+    <ImageView
+        android:id="@+id/dialog_IV"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/devil_check_btn"
+        app:layout_constraintStart_toEndOf="@+id/devil_check_btn"
+        app:srcCompat="@drawable/dialog" />
+
+    <TextView
+        android:id="@+id/dialog_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nexon_cart_gothic_bold"
+        android:text="맞춰봐!"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_IV"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_IV"
+        app:layout_constraintStart_toEndOf="@+id/devil_check_btn"
+        app:layout_constraintTop_toTopOf="@+id/dialog_IV" />
+
+    <ImageView
+        android:id="@+id/quiz_paper_IV"
+        android:layout_width="290dp"
+        android:layout_height="435dp"
+        app:layout_constraintBottom_toBottomOf="@+id/play_quiz_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/quiz_card_paper" />
+
+    <ImageView
+        android:id="@+id/leftBtn"
+        android:layout_width="55dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/quiz_paper_IV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quiz_paper_IV"
+        app:srcCompat="@drawable/arrow_left" />
+
+    <ImageView
+        android:id="@+id/rightBtn"
+        android:layout_width="55dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/quiz_paper_IV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quiz_paper_IV"
+        app:srcCompat="@drawable/arrow_right" />
+
+    <ImageView
+        android:id="@+id/exit_btn"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/exit_btn" />
+
+    <TextView
+        android:id="@+id/question_TV"
+        android:layout_width="230dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/nexon_cart_gothic_medium"
+        android:gravity="center"
+        android:text="문제"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/answer_check_TV"
+        app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"
+        app:layout_constraintStart_toStartOf="@+id/quiz_paper_IV"
+        app:layout_constraintTop_toBottomOf="@+id/question_IV" />
+
+    <ImageView
+        android:id="@+id/question_IV"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"
+        app:layout_constraintStart_toStartOf="@+id/quiz_paper_IV"
+        app:layout_constraintTop_toBottomOf="@+id/devil_check_btn"
+        app:srcCompat="@drawable/add_photo_white" />
+
+    <TextView
+        android:id="@+id/answer_check_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="@font/nexon_cart_gothic_bold"
+        android:text="(정답 확인)"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/quiz_paper_IV"
+        app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"
+        app:layout_constraintStart_toStartOf="@+id/quiz_paper_IV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

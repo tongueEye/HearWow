@@ -30,6 +30,8 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.tongueeye.wordcard.databinding.ActivityMainBinding
+import com.tongueeye.wordcard.databinding.DialogConfirm2Binding
+import com.tongueeye.wordcard.databinding.DialogConfirm3Binding
 import com.tongueeye.wordcard.databinding.DialogCreateQuizBinding
 import java.util.Locale
 
@@ -59,19 +61,19 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         val db = AppDatabase.getDatabase(applicationContext)
         val quizDao = db?.quizDao()
 
-//        binding.correctResetBtn.setOnClickListener {
-//            showResetCorrectDialog()
-//        }
+        binding.correctResetBtn.setOnClickListener {
+            showResetCorrectDialog()
+        }
 
         binding.addQuizBtn.setOnClickListener {
             showCreateQuizDialog()
         }
 
-//        binding.PlayQuizBtn.setOnClickListener {
-//            if (quizDao != null) {
-//                showPlayQuizDialog(quizDao)
-//            }
-//        }
+        binding.PlayQuizBtn.setOnClickListener {
+            if (quizDao != null) {
+                showPlayQuizDialog(quizDao)
+            }
+        }
 
         //RecyclerView 설정
         binding.quizListRV.layoutManager = LinearLayoutManager(this)
@@ -376,6 +378,82 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 //                Log.d("TTS Voice", "Voice Name: ${voice.name}, Locale: ${voice.locale}")
 //            }
 //        }
+    }
+
+
+    fun showResetCorrectDialog(){
+        val confirm2Binding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(confirm2Binding.root)
+        val dialog = dialogBuilder.create()
+
+        // 다이얼로그 배경을 투명색으로 설정
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        confirm2Binding.confirmTextView.text = "맞춘 퀴즈를 초기화 할까요?"
+        confirm2Binding.noButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        confirm2Binding.yesButton.setOnClickListener {
+            // 모든 퀴즈의 isCorrect 값을 false로 업데이트
+            val db = AppDatabase.getDatabase(applicationContext)
+            val quizDao = db?.quizDao()
+            val quizList = quizDao?.getAllQuizzes()
+
+            if (quizList!!.isNotEmpty()){
+
+                val quizzes = quizDao.getAllQuizzes()
+                quizzes.forEach { quiz ->
+                    quiz.isCorrect = false
+                    quiz.id.let { quizId ->
+                        quizDao.updateQuiz(quiz)
+                    }
+                }
+
+                loadQuizList()
+                Toast.makeText(this, "맞춘 퀴즈를 초기화 했습니다.", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+
+            } else{
+                Toast.makeText(this, "초기화 할 퀴즈가 없습니다.", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+
+        }
+        dialog.show()
+    }
+
+    fun showPlayQuizDialog(quizDao: QuizDao){
+        val confirmDialogBinding = DialogConfirm3Binding.inflate(LayoutInflater.from(this))
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(confirmDialogBinding.root)
+        val dialog = dialogBuilder.create()
+
+        // 다이얼로그 배경을 투명색으로 설정
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        // 퀴즈 목록 수 가져오기
+        val quizListCount = quizDao.getAllQuizzes().size
+        // isCurrent 속성값이 false인 것의 수 가져오기
+        val notCorrectCount = quizDao.getAllQuizzes().count { !it.isCorrect }
+        confirmDialogBinding.confirmTextView.text = "퀴즈를 시작할까요?"
+        confirmDialogBinding.quizCntTV.text = "(풀 문제: ${notCorrectCount} / 전체 문제: ${quizListCount})"
+
+        confirmDialogBinding.noButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        confirmDialogBinding.yesButton.setOnClickListener {
+            val quizList = quizDao.getAllQuizzes()
+            if (quizList.isNotEmpty()) {
+                val intent = Intent(this@MainActivity, PlayQuizActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this@MainActivity, "퀴즈가 없습니다. 퀴즈를 추가해주세요!", Toast.LENGTH_SHORT).show()
+            }
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
 
