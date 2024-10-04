@@ -5,22 +5,13 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.speech.tts.TextToSpeech
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -126,7 +117,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // 변경 중
-                dialogBinding.qtextCountTV.text="(${s?.length}자/100자)"
+                dialogBinding.qtextCountTV.text="(${s?.length}자/30자)"
             }
             override fun afterTextChanged(s: Editable?) {
             }
@@ -294,13 +285,13 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             DELETE_IMAGE_CHECK = 1
         }
 
-        dialogBinding.qtextCountTV.text="(${dialogBinding.quizEditText.text.length}자/100자)"
+        dialogBinding.qtextCountTV.text="(${dialogBinding.quizEditText.text.length}자/30자)"
         dialogBinding.quizEditText.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // 변경 중
-                dialogBinding.qtextCountTV.text="(${s?.length}자/100자)"
+                dialogBinding.qtextCountTV.text="(${s?.length}자/30자)"
             }
             override fun afterTextChanged(s: Editable?) {
             }
@@ -455,7 +446,5 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
         dialog.show()
     }
-
-
 
 }
