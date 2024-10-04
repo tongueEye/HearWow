@@ -100,7 +100,7 @@
         android:text="문제"
         android:textAlignment="center"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/answer_check_TV"
+        app:layout_constraintBottom_toTopOf="@+id/tts_replay_TV"
         app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"
         app:layout_constraintStart_toStartOf="@+id/quiz_paper_IV"
         app:layout_constraintTop_toBottomOf="@+id/question_IV" />
@@ -118,12 +118,12 @@
         app:srcCompat="@drawable/add_photo_white" />
 
     <TextView
-        android:id="@+id/answer_check_TV"
+        android:id="@+id/tts_replay_TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
         android:fontFamily="@font/nexon_cart_gothic_bold"
-        android:text="(정답 확인)"
+        android:text="(음성 다시 듣기 버튼)"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/quiz_paper_IV"
         app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"

@@ -3,6 +3,7 @@ package com.tongueeye.wordcard
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,17 +16,24 @@ import com.bumptech.glide.Glide
 import com.tongueeye.wordcard.databinding.ActivityPlayQuizBinding
 import com.tongueeye.wordcard.databinding.DialogConfirm2Binding
 import com.tongueeye.wordcard.databinding.DialogConfirmBinding
+import java.util.Locale
 
-class PlayQuizActivity: AppCompatActivity() {
+class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var binding: ActivityPlayQuizBinding
 
     private var unSolvedQuizzes: List<Quiz>? = null
+
+    private var tts: TextToSpeech? = null
+    private var isTTSInitialized = false
+    private var firstQuizLoaded = false // 첫 퀴즈가 로드되었는지 여부 확인 변수
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TTS 초기화
+        tts = TextToSpeech(this, this)
 
         val db = AppDatabase.getDatabase(applicationContext)
         val quizDao = db?.quizDao()
@@ -46,10 +54,15 @@ class PlayQuizActivity: AppCompatActivity() {
             finish() // 액티비티 종료
         }
 
+        // TextView 클릭 시 TTS 실행
+        binding.ttsReplayTV.setOnClickListener {
+            speakOut(binding.questionTV.text.toString())
+        }
+
     }
 
 
-    private fun loadQuizData(currentIdx: Int) {
+    private fun loadQuizData(currentIdx: Int, speak: Boolean = true) {
         //quiz Data를 가져옴
         val db = AppDatabase.getDatabase(applicationContext)
         val quizDao = db?.quizDao()
@@ -65,6 +78,11 @@ class PlayQuizActivity: AppCompatActivity() {
 
         binding.questionTV.text = currentQuiz.sentence
         binding.dialogTV.text = if (currentQuiz.isCorrect) "맞춘\n문제입니다!" else "맞춰봐!"
+
+        // TTS 음성 출력 - 퀴즈가 화면에 표시될 때 자동으로 음성 재생
+        if (speak && isTTSInitialized) {
+            speakOut(currentQuiz.sentence)
+        }
 
         // 배경색 변경
         if (currentQuiz.isCorrect) {
@@ -183,8 +201,50 @@ class PlayQuizActivity: AppCompatActivity() {
                 }
                 alertDialog.show()
             }
+        }
+    }
 
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts?.setLanguage(Locale.KOREAN)
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "언어가 지원되지 않음")
+            } else {
+                isTTSInitialized = true
+
+                // TTS 초기화가 완료되었으므로 첫 퀴즈 음성 출력
+                if (!firstQuizLoaded) {
+                    loadQuizData(0) // 첫 번째 퀴즈를 다시 로드하고 음성 출력
+                    firstQuizLoaded = true
+                }
+            }
+        } else {
+            Log.e("TTS", "TTS 초기화 실패")
+        }
+    }
+
+    // 텍스트를 음성으로 변환하는 함수
+    private fun speakOut(text: String) {
+
+        if (isTTSInitialized) {
+            // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
+            tts?.setSpeechRate(0.5f)
+
+            // 목소리 크기(피치) 설정 (1.0은 기본 피치, 0.5는 낮은 피치, 2.0은 높은 피치)
+            tts?.setPitch(1.0f)
+
+            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
         }
 
     }
+
+    // TTS 종료 시 자원 해제
+    override fun onDestroy() {
+        if (tts != null) {
+            tts?.stop()
+            tts?.shutdown()
+        }
+        super.onDestroy()
+    }
+
 }
