@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,6 @@ import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.tongueeye.wordcard.databinding.ActivityPlayQuizBinding
 import com.tongueeye.wordcard.databinding.DialogConfirm2Binding
-import com.tongueeye.wordcard.databinding.DialogConfirmBinding
 import java.util.Locale
 
 class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -54,8 +54,8 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
             finish() // 액티비티 종료
         }
 
-        // TextView 클릭 시 TTS 실행
-        binding.ttsReplayTV.setOnClickListener {
+        // 카드 이미지 클릭 시 TTS 실행
+        binding.quizPaperIV.setOnClickListener {
             speakOut(binding.questionTV.text.toString())
         }
 
@@ -184,7 +184,7 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
                 alertDialog.show()
             }else{
-                val dialogBinding = DialogConfirmBinding.inflate(LayoutInflater.from(this))
+                val dialogBinding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
                 val dialogBuilder = AlertDialog.Builder(this)
                 val alertDialog = dialogBuilder.create()
 
@@ -225,18 +225,44 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // 텍스트를 음성으로 변환하는 함수
     private fun speakOut(text: String) {
-
         if (isTTSInitialized) {
+            // TTS 음성이 실행되기 전 글자색을 파란색으로 변경
+            binding.questionTV.setTextColor(ContextCompat.getColor(this, R.color.blue))
+
             // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
             tts?.setSpeechRate(0.5f)
-
             // 목소리 크기(피치) 설정 (1.0은 기본 피치, 0.5는 낮은 피치, 2.0은 높은 피치)
             tts?.setPitch(1.0f)
 
-            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
-        }
+            // TTS 콜백을 위한 매개변수 설정
+            val params = Bundle()
+            params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "utteranceId")
 
+            // 음성 출력
+            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, params, "utteranceId")
+
+            // UtteranceProgressListener를 통해 음성 출력 완료 후 글자색 복원
+            tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                override fun onStart(utteranceId: String) {
+                    // 음성 시작 시
+                }
+
+                override fun onDone(utteranceId: String) {
+                    // 음성 종료 후 글자색을 원래 색으로 변경
+                    runOnUiThread {
+                        binding.questionTV.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+                    }
+                }
+
+                @Deprecated("Deprecated in Java")
+                override fun onError(utteranceId: String) {
+                    // 오류 발생 시 처리
+                }
+            })
+        }
     }
+
+
 
     // TTS 종료 시 자원 해제
     override fun onDestroy() {
