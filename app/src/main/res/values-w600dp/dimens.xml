@@ -1,3 +1,10 @@
 <resources>
     <dimen name="fab_margin">48dp</dimen>
+
+    <dimen name="folder_title_text_size">48sp</dimen>
+
+    <dimen name="icon_size">50dp</dimen>
+    <dimen name="text_size">28sp</dimen>
+    <dimen name="layout_height">80dp</dimen>
+    <dimen name="layout_margin_bottom">15dp</dimen>
 </resources>
