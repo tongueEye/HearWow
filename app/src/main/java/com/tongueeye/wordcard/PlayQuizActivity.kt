@@ -230,7 +230,7 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
             binding.questionTV.setTextColor(ContextCompat.getColor(this, R.color.blue))
 
             // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
-            tts?.setSpeechRate(0.5f)
+            tts?.setSpeechRate(0.6f)
             // 목소리 크기(피치) 설정 (1.0은 기본 피치, 0.5는 낮은 피치, 2.0은 높은 피치)
             tts?.setPitch(1.0f)
 
