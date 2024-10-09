@@ -44,9 +44,9 @@ class QuizAdapter(private val quizDao: QuizDao, private val quizActivity: MainAc
 
         // isCorrect에 따라 이미지 설정
         if (quiz.isCorrect == false){
-            holder.binding.IconIV.setImageResource(R.drawable.skull1)
+            holder.binding.IconIV.setImageResource(R.drawable.x_icon)
         } else{
-            holder.binding.IconIV.setImageResource(R.drawable.flame3_blue)
+            holder.binding.IconIV.setImageResource(R.drawable.o_icon)
         }
 
     }

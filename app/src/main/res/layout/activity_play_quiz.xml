@@ -18,60 +18,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/splash_bottom" />
 
-    <!-- 중앙 버튼 -->
+    <!-- 채점 버튼 -->
     <ImageView
-        android:id="@+id/devil_check_btn"
+        android:id="@+id/correct_check_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/quiz_paper_IV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.28"
-        app:srcCompat="@drawable/devil_icon" />
-
-    <!-- 대화 상자 이미지 -->
-    <ImageView
-        android:id="@+id/dialog_IV"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/devil_check_btn"
-        app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintStart_toEndOf="@+id/devil_check_btn"
-        app:layout_constraintWidth_percent="0.15"
-        app:srcCompat="@drawable/dialog" />
-
-    <!-- 대화 상자 텍스트 -->
-    <TextView
-        android:id="@+id/dialog_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nexon_cart_gothic_bold"
-        android:text="맞춰봐!"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/dialog_IV"
-        app:layout_constraintEnd_toEndOf="@+id/dialog_IV"
-        app:layout_constraintStart_toEndOf="@+id/devil_check_btn"
-        app:layout_constraintTop_toTopOf="@+id/dialog_IV" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        app:srcCompat="@drawable/wrong_btn" />
 
     <!-- 문제 카드 배경 -->
-
-    <!-- 좌측 버튼 -->
     <ImageView
         android:id="@+id/quiz_paper_IV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/play_quiz_bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintHeight_percent="0.55"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
-        app:layout_constraintWidth_percent="0.7"
-        app:srcCompat="@drawable/quiz_card_paper" />
+        app:layout_constraintWidth_percent="0.68"
+        app:srcCompat="@drawable/card_bg" />
 
+    <!-- 좌측 버튼 -->
     <ImageView
         android:id="@+id/leftBtn"
         android:layout_width="0dp"
@@ -81,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quiz_paper_IV"
         app:layout_constraintWidth_percent="0.15"
-        app:srcCompat="@drawable/arrow_left" />
+        app:srcCompat="@drawable/arrow_left_white" />
 
     <!-- 우측 버튼 -->
     <ImageView
@@ -93,25 +68,26 @@
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintTop_toTopOf="@+id/quiz_paper_IV"
         app:layout_constraintWidth_percent="0.15"
-        app:srcCompat="@drawable/arrow_right" />
+        app:srcCompat="@drawable/arrow_right_white" />
 
     <!-- 종료 버튼 -->
     <ImageView
         android:id="@+id/exit_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintHeight_percent="0.1"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.16"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.15"
-        app:srcCompat="@drawable/exit_btn" />
-
+        app:layout_constraintWidth_percent="0.4"
+        app:srcCompat="@drawable/stop_btn" />
 
     <!-- 문제 텍스트 -->
     <TextView
         android:id="@+id/question_TV"
-        android:layout_width="288dp"
+        android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexon_cart_gothic_medium"
         android:gravity="center"
@@ -128,16 +104,17 @@
     <!-- 문제 이미지 -->
     <ImageView
         android:id="@+id/question_IV"
-        android:layout_width="0dp"
+        android:layout_width="206dp"
         android:layout_height="0dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="단어 이미지"
         android:scaleType="fitCenter"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"
         app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="@+id/quiz_paper_IV"
-        app:layout_constraintTop_toBottomOf="@+id/devil_check_btn"
+        app:layout_constraintTop_toTopOf="@+id/quiz_paper_IV"
         app:layout_constraintWidth_percent="0.5"
         app:srcCompat="@drawable/add_photo_white" />
 
