@@ -77,7 +77,6 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
         val currentQuiz = quizData[currentIdx]
 
         binding.questionTV.text = currentQuiz.sentence
-        binding.dialogTV.text = if (currentQuiz.isCorrect) "맞춘\n문제입니다!" else "맞춰봐!"
 
         // TTS 음성 출력 - 퀴즈가 화면에 표시될 때 자동으로 음성 재생
         if (speak && isTTSInitialized) {
@@ -86,28 +85,26 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
 
         // 배경색 변경
         if (currentQuiz.isCorrect) {
-            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.light_sky))
-            binding.leftBtn.setImageResource(R.drawable.arrow_left_white)
-            binding.rightBtn.setImageResource(R.drawable.arrow_right_white)
-            binding.quizPaperIV.setImageResource(R.drawable.quiz_card_paper_white)
-//            binding.playQuizBottom.setImageResource(R.drawable.play_quiz_bottom_grass)
-            binding.exitBtn.setImageResource(R.drawable.exit_btn_white)
+//            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.light_sky))
+//            binding.leftBtn.setImageResource(R.drawable.arrow_left_white)
+//            binding.rightBtn.setImageResource(R.drawable.arrow_right_white)
+//            binding.quizPaperIV.setImageResource(R.drawable.quiz_card_paper_white)
+//            binding.exitBtn.setImageResource(R.drawable.exit_btn_white)
         } else{
-            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_night))
-            binding.leftBtn.setImageResource(R.drawable.arrow_left)
-            binding.rightBtn.setImageResource(R.drawable.arrow_right)
-            binding.quizPaperIV.setImageResource(R.drawable.quiz_card_paper)
-//            binding.playQuizBottom.setImageResource(R.drawable.gate_bottom)
-            binding.exitBtn.setImageResource(R.drawable.exit_btn)
+//            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_night))
+//            binding.leftBtn.setImageResource(R.drawable.arrow_left)
+//            binding.rightBtn.setImageResource(R.drawable.arrow_right)
+//            binding.quizPaperIV.setImageResource(R.drawable.quiz_card_paper)
+//            binding.exitBtn.setImageResource(R.drawable.exit_btn)
         }
 
         // 이미지 변경
         val imageResource = if (currentQuiz.isCorrect) {
-            R.drawable.angel_icon // isCorrect가 true일 때
+            R.drawable.correct_btn // isCorrect가 true일 때
         } else {
-            R.drawable.devil_icon // isCorrect가 false일 때
+            R.drawable.wrong_btn // isCorrect가 false일 때
         }
-        binding.devilCheckBtn.setImageResource(imageResource)
+        binding.correctCheckBtn.setImageResource(imageResource)
 
         val imageUri = currentQuiz.id.let { quizDao?.getImageUri(it)?.toUri() }
         Log.d("PlayQuizActivity", "Image URI: $imageUri")
@@ -152,7 +149,7 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
             loadQuizData(prevIdx)
         }
 
-        binding.devilCheckBtn.setOnClickListener {
+        binding.correctCheckBtn.setOnClickListener {
 
             // 현재 퀴즈의 isCorrect 값을 토글
             quizData[currentIdx].isCorrect = !quizData[currentIdx].isCorrect
@@ -166,41 +163,22 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding.exitBtn.setOnClickListener {
             // quizAdapter 초기화
-            if(binding.dialogTV.text == "맞춘\n문제입니다!"){
-                val dialogBinding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
-                val dialogBuilder = AlertDialog.Builder(this)
-                val alertDialog = dialogBuilder.create()
+            val dialogBinding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
+            val dialogBuilder = AlertDialog.Builder(this)
+            val alertDialog = dialogBuilder.create()
 
-                alertDialog.setView(dialogBinding.root)
-                alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialogBinding.confirmTextView.text="퀴즈를 종료할까요?"
+            alertDialog.setView(dialogBinding.root)
+            alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialogBinding.confirmTextView.text="퀴즈를 종료할까요?"
 
-                dialogBinding.noButton.setOnClickListener {
-                    alertDialog.dismiss()
-                }
-                dialogBinding.yesButton.setOnClickListener {
-                    alertDialog.dismiss()
-                    finish()
-                }
-                alertDialog.show()
-            }else{
-                val dialogBinding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
-                val dialogBuilder = AlertDialog.Builder(this)
-                val alertDialog = dialogBuilder.create()
-
-                alertDialog.setView(dialogBinding.root)
-                alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialogBinding.confirmTextView.text="퀴즈를 종료할까요?"
-
-                dialogBinding.noButton.setOnClickListener {
-                    alertDialog.dismiss()
-                }
-                dialogBinding.yesButton.setOnClickListener {
-                    alertDialog.dismiss()
-                    finish()
-                }
-                alertDialog.show()
+            dialogBinding.noButton.setOnClickListener {
+                alertDialog.dismiss()
             }
+            dialogBinding.yesButton.setOnClickListener {
+                alertDialog.dismiss()
+                finish()
+            }
+            alertDialog.show()
         }
     }
 

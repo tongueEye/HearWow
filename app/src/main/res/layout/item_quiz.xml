@@ -15,7 +15,7 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/skull1"/>
+        app:srcCompat="@drawable/x_icon"/>
 
     <TextView
         android:id="@+id/QuestionTV"
