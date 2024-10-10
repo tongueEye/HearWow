@@ -15,7 +15,7 @@
         android:textSize="25dp"
         android:layout_marginTop="18dp"
         android:textColor="@color/white"
-        android:fontFamily="@font/nexon_cart_gothic_bold"
+        android:fontFamily="@font/bmjua"
         android:text="낱말 카드 만들기" />
 
     <ImageView
@@ -42,10 +42,10 @@
         android:id="@+id/quizEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="6dp"
+        android:padding="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/view_round_white"
-        android:fontFamily="@font/nexon_cart_gothic_medium"
+        android:fontFamily="@font/bmjua"
         android:gravity="center"
         android:hint="단어나 문장을 입력하세요."
         android:layout_marginLeft="15dp"
@@ -63,7 +63,7 @@
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nexon_cart_gothic_medium"
+        android:fontFamily="@font/bmjua"
         android:text="@string/dialog_create_text_count" />
 
 
@@ -86,7 +86,7 @@
             android:text="취소"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:fontFamily="@font/nexon_cart_gothic_bold"
+            android:fontFamily="@font/bmjua"
             android:textSize="18sp" />
 
         <android.widget.Button
@@ -98,7 +98,7 @@
             android:text="저장"
             android:textColor="@color/dark_night"
             android:textStyle="bold"
-            android:fontFamily="@font/nexon_cart_gothic_bold"
+            android:fontFamily="@font/bmjua"
             android:textSize="18sp" />
 
     </LinearLayout>

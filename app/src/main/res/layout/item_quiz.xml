@@ -12,21 +12,21 @@
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/x_icon"/>
+        app:srcCompat="@drawable/x_icon" />
 
     <TextView
         android:id="@+id/QuestionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/nexon_cart_gothic_bold"
+        android:fontFamily="@font/bmjua"
         android:text="@string/QuizName"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/IconIV"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,8 +34,8 @@
         android:id="@+id/optionBtn"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/options_white" />
