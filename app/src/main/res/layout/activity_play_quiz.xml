@@ -38,12 +38,12 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/play_quiz_bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.55"
+        app:layout_constraintHeight_percent="0.58"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
-        app:layout_constraintWidth_percent="0.68"
+        app:layout_constraintWidth_percent="0.65"
         app:srcCompat="@drawable/card_bg" />
 
     <!-- 좌측 버튼 -->
@@ -87,15 +87,15 @@
     <!-- 문제 텍스트 -->
     <TextView
         android:id="@+id/question_TV"
-        android:layout_width="272dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nexon_cart_gothic_medium"
+        android:fontFamily="@font/bmjua"
         android:gravity="center"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:text="단어나 문장을 입력하면 이렇게 보입니다."
         android:textAlignment="center"
-        android:textSize="35sp"
+        android:textSize="@dimen/quiz_text_size"
         app:layout_constraintBottom_toBottomOf="@+id/quiz_paper_IV"
         app:layout_constraintEnd_toEndOf="@+id/quiz_paper_IV"
         app:layout_constraintStart_toStartOf="@+id/quiz_paper_IV"

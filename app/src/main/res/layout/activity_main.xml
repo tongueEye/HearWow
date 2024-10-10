@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/nexon_cart_gothic_extra_bold"
+        android:fontFamily="@font/bmjua"
         android:text="낱말카드 목록"
         android:textColor="@color/white"
         android:textSize="@dimen/folder_title_text_size"
