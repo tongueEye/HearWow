@@ -62,7 +62,15 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding.PlayQuizBtn.setOnClickListener {
             if (quizDao != null) {
-                showPlayQuizDialog(quizDao)
+                //showPlayQuizDialog(quizDao)
+
+                val quizList = quizDao.getAllQuizzes()
+                if (quizList.isNotEmpty()) {
+                    val intent = Intent(this@MainActivity, PlayQuizActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@MainActivity, "퀴즈가 없습니다. 퀴즈를 추가해주세요!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -414,37 +422,37 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         dialog.show()
     }
 
-    fun showPlayQuizDialog(quizDao: QuizDao){
-        val confirmDialogBinding = DialogConfirm3Binding.inflate(LayoutInflater.from(this))
-        val dialogBuilder = AlertDialog.Builder(this)
-            .setView(confirmDialogBinding.root)
-        val dialog = dialogBuilder.create()
-
-        // 다이얼로그 배경을 투명색으로 설정
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        // 퀴즈 목록 수 가져오기
-        val quizListCount = quizDao.getAllQuizzes().size
-        // isCurrent 속성값이 false인 것의 수 가져오기
-        val notCorrectCount = quizDao.getAllQuizzes().count { !it.isCorrect }
-        confirmDialogBinding.confirmTextView.text = "퀴즈를 시작할까요?"
-        confirmDialogBinding.quizCntTV.text = "(풀 문제: ${notCorrectCount} / 전체 문제: ${quizListCount})"
-
-        confirmDialogBinding.noButton.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        confirmDialogBinding.yesButton.setOnClickListener {
-            val quizList = quizDao.getAllQuizzes()
-            if (quizList.isNotEmpty()) {
-                val intent = Intent(this@MainActivity, PlayQuizActivity::class.java)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this@MainActivity, "퀴즈가 없습니다. 퀴즈를 추가해주세요!", Toast.LENGTH_SHORT).show()
-            }
-            dialog.dismiss()
-        }
-        dialog.show()
-    }
+//    fun showPlayQuizDialog(quizDao: QuizDao){
+//        val confirmDialogBinding = DialogConfirm3Binding.inflate(LayoutInflater.from(this))
+//        val dialogBuilder = AlertDialog.Builder(this)
+//            .setView(confirmDialogBinding.root)
+//        val dialog = dialogBuilder.create()
+//
+//        // 다이얼로그 배경을 투명색으로 설정
+//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//
+//        // 퀴즈 목록 수 가져오기
+//        val quizListCount = quizDao.getAllQuizzes().size
+//        // isCurrent 속성값이 false인 것의 수 가져오기
+//        val notCorrectCount = quizDao.getAllQuizzes().count { !it.isCorrect }
+//        confirmDialogBinding.confirmTextView.text = "퀴즈를 시작할까요?"
+//        confirmDialogBinding.quizCntTV.text = "(풀 문제: ${notCorrectCount} / 전체 문제: ${quizListCount})"
+//
+//        confirmDialogBinding.noButton.setOnClickListener {
+//            dialog.dismiss()
+//        }
+//
+//        confirmDialogBinding.yesButton.setOnClickListener {
+//            val quizList = quizDao.getAllQuizzes()
+//            if (quizList.isNotEmpty()) {
+//                val intent = Intent(this@MainActivity, PlayQuizActivity::class.java)
+//                startActivity(intent)
+//            } else {
+//                Toast.makeText(this@MainActivity, "퀴즈가 없습니다. 퀴즈를 추가해주세요!", Toast.LENGTH_SHORT).show()
+//            }
+//            dialog.dismiss()
+//        }
+//        dialog.show()
+//    }
 
 }
