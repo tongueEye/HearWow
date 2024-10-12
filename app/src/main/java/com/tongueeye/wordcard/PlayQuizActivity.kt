@@ -84,19 +84,19 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         // 배경색 변경
-        if (currentQuiz.isCorrect) {
+//        if (currentQuiz.isCorrect) {
 //            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.light_sky))
 //            binding.leftBtn.setImageResource(R.drawable.arrow_left_white)
 //            binding.rightBtn.setImageResource(R.drawable.arrow_right_white)
 //            binding.quizPaperIV.setImageResource(R.drawable.quiz_card_paper_white)
 //            binding.exitBtn.setImageResource(R.drawable.exit_btn_white)
-        } else{
+//        } else{
 //            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_night))
 //            binding.leftBtn.setImageResource(R.drawable.arrow_left)
 //            binding.rightBtn.setImageResource(R.drawable.arrow_right)
 //            binding.quizPaperIV.setImageResource(R.drawable.quiz_card_paper)
 //            binding.exitBtn.setImageResource(R.drawable.exit_btn)
-        }
+//        }
 
         // 이미지 변경
         val imageResource = if (currentQuiz.isCorrect) {
@@ -163,22 +163,23 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding.exitBtn.setOnClickListener {
             // quizAdapter 초기화
-            val dialogBinding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
-            val dialogBuilder = AlertDialog.Builder(this)
-            val alertDialog = dialogBuilder.create()
-
-            alertDialog.setView(dialogBinding.root)
-            alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialogBinding.confirmTextView.text="퀴즈를 종료할까요?"
-
-            dialogBinding.noButton.setOnClickListener {
-                alertDialog.dismiss()
-            }
-            dialogBinding.yesButton.setOnClickListener {
-                alertDialog.dismiss()
-                finish()
-            }
-            alertDialog.show()
+//            val dialogBinding = DialogConfirm2Binding.inflate(LayoutInflater.from(this))
+//            val dialogBuilder = AlertDialog.Builder(this)
+//            val alertDialog = dialogBuilder.create()
+//
+//            alertDialog.setView(dialogBinding.root)
+//            alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            dialogBinding.confirmTextView.text="퀴즈를 종료할까요?"
+//
+//            dialogBinding.noButton.setOnClickListener {
+//                alertDialog.dismiss()
+//            }
+//            dialogBinding.yesButton.setOnClickListener {
+//                alertDialog.dismiss()
+//                finish()
+//            }
+//            alertDialog.show()
+            finish()
         }
     }
 
