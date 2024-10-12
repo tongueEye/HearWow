@@ -116,10 +116,10 @@ class QuizAdapter(private val quizDao: QuizDao, private val quizActivity: MainAc
         }
 
         // TTS 버튼 클릭 리스너 추가
-        dialogBinding.playTtsBtn.setOnClickListener {
-            // TTS로 questionTV의 텍스트 읽기
-            quizActivity.speakOut(quiz.sentence)
-        }
+//        dialogBinding.playTtsBtn.setOnClickListener {
+//            // TTS로 questionTV의 텍스트 읽기
+//            quizActivity.speakOut(quiz.sentence)
+//        }
 
         alertDialog.setView(dialogBinding.root)
         alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
