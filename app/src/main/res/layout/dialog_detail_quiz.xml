@@ -52,11 +52,11 @@
         android:text="문장이나 단어" />
 
 
-    <ImageView
-        android:id="@+id/play_tts_btn"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        app:srcCompat="@drawable/play_quiz_btn" />
+<!--    <ImageView-->
+<!--        android:id="@+id/play_tts_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="59dp"-->
+<!--        app:srcCompat="@drawable/play_quiz_btn" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
