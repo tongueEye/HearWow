@@ -28,8 +28,16 @@ class QuizAdapter(private val quizDao: QuizDao, private val quizActivity: MainAc
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
         val quiz = quizList[position]
 
-        if (quiz.sentence.length > 15) {
-            holder.binding.QuestionTV.text = "${quiz.sentence.substring(0, 15)}..."
+        // 화면 크기에 따라 문자열 자르기
+        val config = holder.itemView.context.resources.configuration
+        val maxLength = if (config.smallestScreenWidthDp >= 600) {  // 태블릿: 600dp 이상
+            30
+        } else {
+            15  // 모바일: 600dp 미만
+        }
+
+        if (quiz.sentence.length > maxLength) {
+            holder.binding.QuestionTV.text = "${quiz.sentence.substring(0, maxLength)}..."
         } else {
             holder.binding.QuestionTV.text = quiz.sentence
         }

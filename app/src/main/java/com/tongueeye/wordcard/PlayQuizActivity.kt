@@ -206,7 +206,7 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun speakOut(text: String) {
         if (isTTSInitialized) {
             // TTS 음성이 실행되기 전 글자색을 파란색으로 변경
-            binding.questionTV.setTextColor(ContextCompat.getColor(this, R.color.blue))
+            binding.questionTV.setTextColor(ContextCompat.getColor(this, R.color.change_color))
 
             // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
             tts?.setSpeechRate(0.6f)

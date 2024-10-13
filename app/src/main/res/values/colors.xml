@@ -6,4 +6,5 @@
     <color name="blue">#0000FF</color>
     <color name="dark_night">#2A286F</color>
     <color name="light_sky">#96DCF8</color>
+    <color name="change_color">#1E90FF</color>
 </resources>
