@@ -13,8 +13,9 @@
         android:layout_height="25dp"
         android:layout_gravity="end"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/close_btn" />
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/close_btn"
+        android:contentDescription="@string/close_btn" />
 
     <TextView
         android:id="@+id/instructionTextView"
@@ -23,9 +24,9 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/bmjua"
         android:gravity="center"
-        android:text="낱말 카드"
+        android:text="@string/detail_card_title"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <ImageView
         android:id="@+id/add_photo_IV"
@@ -35,21 +36,22 @@
         android:layout_marginBottom="10dp"
         android:src="@drawable/add_photo_white"
         android:visibility="gone"
-        android:elevation="2dp"/>
+        android:elevation="2dp"
+        android:contentDescription="@string/word_img" />
 
     <TextView
         android:id="@+id/questionTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:fontFamily="@font/bmjua"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="문장이나 단어" />
+        android:text="@string/detail_card_word" />
 
 
 <!--    <ImageView-->
