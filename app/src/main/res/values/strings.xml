@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WordCard</string>
+    <string name="app_name">히얼 와우</string>
     <string name="main_title">낱말카드 목록</string>
 
     <string name="confirm_txt">정말 하시겠습니까?</string>
