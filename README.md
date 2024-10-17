@@ -34,9 +34,16 @@
 
 ### 스토리보드
 * 스플래시 화면
+  ![스토리보드1](https://github.com/user-attachments/assets/26f3198f-672e-484a-a6b5-da804a7c4069)
 
 * 메인화면 (낱말 카드 목록 화면)
+  ![스토리보드2](https://github.com/user-attachments/assets/486a5887-b639-4501-b61d-86b44244af84)
 
 * 퀴즈 추가 창
+  ![스토리보드3](https://github.com/user-attachments/assets/a1f8417f-bbac-426b-9135-b938c185bd7e)
 
 * 퀴즈 플레이 화면
+  ![스토리보드4](https://github.com/user-attachments/assets/80c5b0b9-8239-4a7b-b519-f283920847f5)
+
+
+
