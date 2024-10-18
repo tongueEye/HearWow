@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     val intent = Intent(this@MainActivity, PlayQuizActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this@MainActivity, "퀴즈가 없습니다. 퀴즈를 추가해주세요!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "공부할 카드가 없습니다. 카드를 추가해주세요!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -227,7 +227,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         val imageUriString = imageUri?.toString() ?: ""
         val quiz = Quiz(sentence = quizText, imageUri = imageUriString)
         AppDatabase.getDatabase(applicationContext)?.quizDao()?.insertQuiz(quiz)
-        Toast.makeText(this, "퀴즈가 추가되었습니다.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "낱말 카드가 추가되었습니다.", Toast.LENGTH_SHORT).show()
         loadQuizList()
     }
 
@@ -363,7 +363,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     fun speakOut(text: String) {
 
         // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
-        tts.setSpeechRate(0.5f)
+        tts.setSpeechRate(0.7f)
 
         // 목소리 크기(피치) 설정 (1.0은 기본 피치, 0.5는 낮은 피치, 2.0은 높은 피치)
         tts.setPitch(1.0f)
@@ -389,7 +389,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // 다이얼로그 배경을 투명색으로 설정
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        confirm2Binding.confirmTextView.text = "맞춘 퀴즈를 초기화 할까요?"
+        confirm2Binding.confirmTextView.text = "맞춘 카드를 초기화 할까요?"
         confirm2Binding.noButton.setOnClickListener {
             dialog.dismiss()
         }
@@ -410,11 +410,11 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
 
                 loadQuizList()
-                Toast.makeText(this, "맞춘 퀴즈를 초기화 했습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "채점이 취소 되었습니다.", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
 
             } else{
-                Toast.makeText(this, "초기화 할 퀴즈가 없습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "다시 채점할 카드가 없습니다.", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
 

@@ -8,6 +8,7 @@
     <dimen name="layout_height">65dp</dimen>
     <dimen name="layout_margin_bottom">10dp</dimen>
 
-    <dimen name="quiz_text_size">35sp</dimen>
+    <dimen name="quiz_img_margin_top">50dp</dimen>
+    <dimen name="quiz_text_size">32sp</dimen>
 
 </resources>

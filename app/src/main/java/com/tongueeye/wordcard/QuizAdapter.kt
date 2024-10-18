@@ -105,7 +105,7 @@ class QuizAdapter(private val quizDao: QuizDao, private val quizActivity: MainAc
             dialogBinding.addPhotoIV.visibility = View.GONE
         } else {
             dialogBinding.addPhotoIV.visibility = View.VISIBLE
-            Toast.makeText(quizActivity, quiz.imageUri!!.toUri().toString(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(quizActivity, quiz.imageUri!!.toUri().toString(), Toast.LENGTH_SHORT).show()
             Glide.with(quizActivity)
                 .load(quiz.imageUri!!.toUri())
                 .into(dialogBinding.addPhotoIV)
