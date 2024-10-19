@@ -35,7 +35,9 @@
 ### 스토리보드
 * 스플래시 화면
 <img src="https://github.com/user-attachments/assets/26f3198f-672e-484a-a6b5-da804a7c4069" width="300px">
+
 (1) 2초 동안 뜨고 사라지는 스플래시 화면
+
 
 * 메인화면 (낱말 카드 목록 화면)
 <img src="https://github.com/user-attachments/assets/486a5887-b639-4501-b61d-86b44244af84" width="300px">
