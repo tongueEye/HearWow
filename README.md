@@ -33,38 +33,10 @@
 
 
 ### 스토리보드
-* 스플래시 화면
-<img src="https://github.com/user-attachments/assets/26f3198f-672e-484a-a6b5-da804a7c4069" width="300px">
+![001](https://github.com/user-attachments/assets/aea6ba72-37fb-4268-a161-478d90195b4e)
+![002](https://github.com/user-attachments/assets/0e8316f1-2539-4e35-b119-60da222a095a)
+![003](https://github.com/user-attachments/assets/a19bc3ca-6337-42dd-b660-bc0c77025576)
+![004](https://github.com/user-attachments/assets/197fb548-8ccb-4853-af0b-235955b97cce)
 
-- (1) 2초 동안 뜨고 사라지는 스플래시 화면
-
-
-* 메인화면 (낱말 카드 목록 화면)
-<img src="https://github.com/user-attachments/assets/486a5887-b639-4501-b61d-86b44244af84" width="300px">
-
-- (1) 낱말카드 목록이 보이며, 스크롤로 목록들을 내려 볼 수 있음.
-- (2) 맞춤 여부 표시
-- (3) 낱말 카드 텍스트가 표시되며, 클릭 시 낱말 카드를 팝업창으로 볼 수 있음.
-- (4) 클릭 시, 수정 및 삭제 메뉴가 보이며 이를 통해 입력한 낱말 카드를 수정하고 삭제할 수 있음.
-- (5) 클릭 시, 맞춤 여부가 초기화 됨.
-- (6) 클릭 시, 낱말 카드 추가 창이 나옴.
-- (7) 클릭 시, 낱말 카드가 랜덤으로 재생됨.
-
-* 낱말 카드 추가 창
-<img src="https://github.com/user-attachments/assets/a1f8417f-bbac-426b-9135-b938c185bd7e" width="300px">
-- (1) 클릭 시, 갤러리로 이동하며 원하는 사진을 선택할 수 있음.
-- (2) 입력창으로, 30자 까지 입력이 가능
-- (3) 클릭 시, 카드 생성 창이 닫힘
-- (4) 클릭 시, 낱말 카드가 목록에 추가됨
-
-
-* 낱말 카드 재생 화면
-<img src="https://github.com/user-attachments/assets/80c5b0b9-8239-4a7b-b519-f283920847f5" width="300px">
-- (1) 토글로 맞춤 여부를 변경할 수 있음
-- (2) 낱말에 대한 이미지이며, 클릭 시 2배로 확대해서 볼 수 있음
-- (3) 낱말 텍스트이며, 퀴즈 카드가 보여지거나 낱말 카드 클릭 시 이 텍스트가 TTS로 재생되는 데, 재생되는 동안 텍스트 색이 변경되어 보임.
-- (4) 이전 버튼 클릭 시, 이전 순서의 퀴즈 카드가 나타남.
-- (5) 다음 버튼 클릭 시, 다음 순서의 퀴즈 카드가 나타남.
-- (6) 클릭 시, 낱말 카드 재생을 종료하고 낱말 카드 목록 창으로 이동
 
 
