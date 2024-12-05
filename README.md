@@ -40,4 +40,5 @@
 
 
 ### 서비스 링크
-- 원스토어: 
+- 원스토어: https://m.onestore.co.kr/ko-kr/apps/appsDetail.omp?prodId=0000779918
+
