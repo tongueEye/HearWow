@@ -54,6 +54,7 @@
         android:layout_marginRight="15dp"
         android:inputType="text"
         android:textSize="23sp"
+        android:textColor="@color/black"
         android:maxLines="6"
         android:maxLength="30"
         android:autofillHints="" />
