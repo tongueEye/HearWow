@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/view_round_darknight"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/instructionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/bmjua"
+        android:text="@string/setting_speed_title" />
+
+    <!-- EditText와 버튼을 감싸는 LinearLayout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <!-- - 버튼 -->
+        <ImageView
+            android:id="@+id/decreaseBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/minus_btn"
+            android:contentDescription="감소"
+            android:background="@drawable/view_round_white"
+            android:scaleType="centerInside"/>
+
+        <!-- 읽기 전용 EditText -->
+        <EditText
+            android:id="@+id/quizEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="11dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/view_round_white"
+            android:fontFamily="@font/bmjua"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:maxLines="1"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="false"
+            android:text="1.0"
+            android:labelFor="@+id/instructionTextView"
+            android:inputType="none"/>
+
+        <!-- + 버튼 -->
+        <ImageView
+            android:id="@+id/increaseBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_btn"
+            android:contentDescription="증가"
+            android:background="@drawable/view_round_white"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="15dp"
+        android:orientation="horizontal">
+
+        <android.widget.Button
+            android:id="@+id/cancelBtn"
+            android:background="@drawable/view_round_white2"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:text="@string/cancel_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/bmjua"
+            android:textSize="18sp" />
+
+        <android.widget.Button
+            android:id="@+id/saveBtn"
+            android:background="@drawable/view_round_white"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/save_text"
+            android:textColor="@color/dark_night"
+            android:textStyle="bold"
+            android:fontFamily="@font/bmjua"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

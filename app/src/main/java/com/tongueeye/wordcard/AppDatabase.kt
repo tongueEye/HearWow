@@ -5,10 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Quiz::class], version = 1)
+@Database(entities = [Quiz::class, Setting::class], version = 2)
 abstract class AppDatabase() : RoomDatabase() {
 
     abstract fun quizDao(): QuizDao
+
+    abstract fun settingDao(): SettingDao
 
     companion object{
         private var INSTANCE: AppDatabase?= null
