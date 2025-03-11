@@ -24,6 +24,7 @@ import com.tongueeye.wordcard.databinding.ActivityMainBinding
 import com.tongueeye.wordcard.databinding.DialogConfirm2Binding
 import com.tongueeye.wordcard.databinding.DialogConfirm3Binding
 import com.tongueeye.wordcard.databinding.DialogCreateQuizBinding
+import com.tongueeye.wordcard.databinding.DialogSettingSpeedBinding
 import java.util.Locale
 
 class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var selectedImageUri: Uri?=null // 이미지를 저장할 변수 추가
     private lateinit var dialogBinding: DialogCreateQuizBinding // 다이얼로그 바인딩 변수 추가
+    private lateinit var settingDialogBinding: DialogSettingSpeedBinding
 
     private val PERMISSION_REQUEST_CODE = 1001 //권한 요청 코드
     private var DELETE_IMAGE_CHECK = 0 //이미지 삭제 버튼 클릭 여부 변수
@@ -51,6 +53,10 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         //Appdatabase 초기화
         val db = AppDatabase.getDatabase(applicationContext)
         val quizDao = db?.quizDao()
+        
+        binding.speedBtn.setOnClickListener { 
+            showSpeedSettingDialog()
+        }
 
         binding.correctResetBtn.setOnClickListener {
             showResetCorrectDialog()
@@ -94,6 +100,43 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private val PICK_IMAGE_REQUEST = 1
+    
+    
+    fun showSpeedSettingDialog(){
+        Toast.makeText(this,"속도 조절 팝업 등장하도록 구현", Toast.LENGTH_SHORT).show()
+
+        settingDialogBinding = DialogSettingSpeedBinding.inflate(LayoutInflater.from(this))
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(settingDialogBinding.root)
+        val dialog = dialogBuilder.create()
+
+        // 다이얼로그 배경을 투명색으로 설정
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        // 감소 버튼 클릭 시
+        settingDialogBinding.decreaseBtn.setOnClickListener {
+            Toast.makeText(this, "감소 버튼 클릭 (-0.1)", Toast.LENGTH_SHORT).show()
+        }
+
+        // 증가 버튼 클릭 시
+        settingDialogBinding.increaseBtn.setOnClickListener {
+            Toast.makeText(this, "증가 버튼 클릭 (+0.1)", Toast.LENGTH_SHORT).show()
+        }
+
+        // 다이얼로그 내 버튼 클릭 이벤트 처리
+        settingDialogBinding.cancelBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        settingDialogBinding.saveBtn.setOnClickListener {
+            // 저장 버튼 클릭 시 처리할 작업 수행
+            Toast.makeText(this, "속도 저장 완료!", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+        dialog.show()
+
+
+    }
 
     fun showCreateQuizDialog() {
         dialogBinding = DialogCreateQuizBinding.inflate(LayoutInflater.from(this))
@@ -357,26 +400,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             tts.shutdown()
         }
         super.onDestroy()
-    }
-
-    // 텍스트 읽기 함수
-    fun speakOut(text: String) {
-
-        // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
-        tts.setSpeechRate(0.7f)
-
-        // 목소리 크기(피치) 설정 (1.0은 기본 피치, 0.5는 낮은 피치, 2.0은 높은 피치)
-        tts.setPitch(1.0f)
-
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
-
-        // 사용 가능한 음성 목록 출력
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            val voices = tts.voices
-//            for (voice in voices) {
-//                Log.d("TTS Voice", "Voice Name: ${voice.name}, Locale: ${voice.locale}")
-//            }
-//        }
     }
 
 
