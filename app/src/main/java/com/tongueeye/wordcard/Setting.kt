@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Setting(
     @PrimaryKey(autoGenerate = true)
     val sid: Int = 0,
-    var ttsSpeed: Float
+    var ttsSpeed: Float = 1.0f
 )
