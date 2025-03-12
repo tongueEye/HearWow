@@ -204,12 +204,16 @@ class PlayQuizActivity: AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // 텍스트를 음성으로 변환하는 함수
     private fun speakOut(text: String) {
+
+        val settingDao = AppDatabase.getDatabase(applicationContext)?.settingDao()
+        var speedValue = settingDao?.getTtsSpeed() ?: 1.0f  // 기본값 1.0f
+
         if (isTTSInitialized) {
             // TTS 음성이 실행되기 전 글자색을 파란색으로 변경
             binding.questionTV.setTextColor(ContextCompat.getColor(this, R.color.change_color))
 
             // 목소리 속도 설정 (1.0은 기본 속도, 0.5는 절반 속도, 2.0은 2배 속도)
-            tts?.setSpeechRate(1.0f)
+            tts?.setSpeechRate(speedValue)
             // 목소리 크기(피치) 설정 (1.0은 기본 피치, 0.5는 낮은 피치, 2.0은 높은 피치)
             tts?.setPitch(1.0f)
 

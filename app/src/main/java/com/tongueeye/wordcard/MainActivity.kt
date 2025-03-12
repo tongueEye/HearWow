@@ -103,7 +103,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     
     
     fun showSpeedSettingDialog(){
-        Toast.makeText(this,"속도 조절 팝업 등장하도록 구현", Toast.LENGTH_SHORT).show()
 
         settingDialogBinding = DialogSettingSpeedBinding.inflate(LayoutInflater.from(this))
         val dialogBuilder = AlertDialog.Builder(this)
@@ -113,14 +112,27 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // 다이얼로그 배경을 투명색으로 설정
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        // DB에서 현재 저장된 속도 값 가져오기
+        val settingDao = AppDatabase.getDatabase(applicationContext)?.settingDao()
+        var speedValue = settingDao?.getTtsSpeed() ?: 1.0f  // 기본값 1.0f
+
+        // UI에 현재 속도 반영
+        settingDialogBinding.quizEditText.setText(String.format("%.1f", speedValue))
+
         // 감소 버튼 클릭 시
         settingDialogBinding.decreaseBtn.setOnClickListener {
-            Toast.makeText(this, "감소 버튼 클릭 (-0.1)", Toast.LENGTH_SHORT).show()
+            if (speedValue > 0.5f) { // 최소 속도 제한
+                speedValue -= 0.1f
+                settingDialogBinding.quizEditText.setText(String.format("%.1f", speedValue))
+            }
         }
 
         // 증가 버튼 클릭 시
         settingDialogBinding.increaseBtn.setOnClickListener {
-            Toast.makeText(this, "증가 버튼 클릭 (+0.1)", Toast.LENGTH_SHORT).show()
+            if (speedValue < 2.0f) { // 최대 속도 제한
+                speedValue += 0.1f
+                settingDialogBinding.quizEditText.setText(String.format("%.1f", speedValue))
+            }
         }
 
         // 다이얼로그 내 버튼 클릭 이벤트 처리
@@ -130,7 +142,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         settingDialogBinding.saveBtn.setOnClickListener {
             // 저장 버튼 클릭 시 처리할 작업 수행
-            Toast.makeText(this, "속도 저장 완료!", Toast.LENGTH_SHORT).show()
+            settingDao?.setTtsSpeed(speedValue)
+            Toast.makeText(this, "속도 저장 완료! ($speedValue)", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
         dialog.show()
