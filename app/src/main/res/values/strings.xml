@@ -22,4 +22,7 @@
     <string name="word_text">단어나 문장을 입력하면 이렇게 보입니다.</string>
 
     <string name="setting_speed_title">음성 재생 속도</string>
+    <string name="increase_txt">증가</string>
+    <string name="decrease_txt">감소</string>
+    <string name="init_speed_txt">0</string>
 </resources>
