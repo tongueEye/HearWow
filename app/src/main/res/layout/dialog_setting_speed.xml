@@ -32,11 +32,11 @@
         <!-- - 버튼 -->
         <ImageView
             android:id="@+id/decreaseBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:src="@drawable/minus_btn"
-            android:contentDescription="감소"
-            android:background="@drawable/view_round_white"
+            android:contentDescription="@string/decrease_txt"
+            android:layout_marginStart="15dp"
             android:scaleType="centerInside"/>
 
         <!-- 읽기 전용 EditText -->
@@ -46,8 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="11dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:background="@drawable/view_round_white"
             android:fontFamily="@font/bmjua"
             android:gravity="center"
@@ -57,18 +55,18 @@
             android:maxLength="30"
             android:focusable="false"
             android:clickable="false"
-            android:text="0"
+            android:text="@string/init_speed_txt"
             android:labelFor="@+id/instructionTextView"
             android:inputType="none"/>
 
         <!-- + 버튼 -->
         <ImageView
             android:id="@+id/increaseBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/plus_btn"
-            android:contentDescription="증가"
-            android:background="@drawable/view_round_white"
+            android:contentDescription="@string/increase_txt"
             android:scaleType="centerInside"/>
     </LinearLayout>
 
