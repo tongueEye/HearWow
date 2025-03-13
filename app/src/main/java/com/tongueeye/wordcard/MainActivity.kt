@@ -143,7 +143,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         settingDialogBinding.saveBtn.setOnClickListener {
             // 저장 버튼 클릭 시 처리할 작업 수행
             settingDao?.setTtsSpeed(speedValue)
-            Toast.makeText(this, "속도 저장 완료! ($speedValue)", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
         dialog.show()
